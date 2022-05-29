@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <script src="./jquery.min.js"></script>
+    <title>Plus ou moins</title>
+</head>
+<body>
+    <div class="container">
+        <input type="text" id="nbInput" placeholder="Taper votre nombre ici">
+        <button id="submit" type="submit">Go !</button>   
+    </div>
+    <p class="textAnswer"></p>
+    <p class="textCount"></p>
+    <script>
+        var numberToFind = Math.floor(Math.random() * 20);
+        // console.log(numberToFind);
+        var nbUser = $("#nbInput");
+        var win = 0;
+        var countCoup = 1;
+        
+
+                $("#submit").click(function(){
+                    if (win < 10) {
+                        isWin(numberToFind,nbUser.val());
+                        console.log(isWin);
+                        win++;
+                        console.log(win);
+                    }
+                    else {
+                        alert("rejouer ?");
+                    }
+                    // alert(nbUser.val());
+                });
+        
+
+        function isWin (number, nbEnter){
+
+
+            if (number < nbEnter){
+                $(".textAnswer").html("Trop Grand gamin !")
+                countCoup ++;
+            }
+            else if (number > nbEnter) {
+                $(".textAnswer").html("Trop petit");
+                countCoup ++;
+            } 
+            else if (number == nbEnter)
+            {
+                $(".textAnswer").html("égalité !");
+                $(".textCount").html("</br> Vous avez fait " + countCoup + " Coup !");
+            }
+        }
+
+
+            
+
+
+            </script>
+</body>
+</html>
