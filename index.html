@@ -10,55 +10,54 @@
 </head>
 <body>
     <div class="container">
+
         <input type="text" id="nbInput" placeholder="Taper votre nombre ici">
         <button id="submit" type="submit">Go !</button>   
+
     </div>
+
     <p class="textAnswer"></p>
     <p class="textCount"></p>
+
+
     <script>
-        var numberToFind = Math.floor(Math.random() * 20);
-        // console.log(numberToFind);
+
+
+        var numberToFind = Math.floor(Math.random() * 20); // créate a random number between 0 and 20.
         var nbUser = $("#nbInput");
         var win = 0;
         var countCoup = 1;
         
 
-                $("#submit").click(function(){
-                    if (win < 10) {
+                $("#submit").click(function(){ 
+                    if (win < 10) { // player don't play more than 10 tiimes.
                         isWin(numberToFind,nbUser.val());
-                        console.log(isWin);
+                        console.log(isWin); 
                         win++;
                         console.log(win);
                     }
                     else {
-                        alert("rejouer ?");
+                        alert("finished, one more time ? </br> Refresh the page.");
                     }
-                    // alert(nbUser.val());
                 });
         
-
+            /* the function is used to find out if the number is larger, smaller or equal.  */
         function isWin (number, nbEnter){
-
-
             if (number < nbEnter){
-                $(".textAnswer").html("Trop Grand gamin !")
+                $(".textAnswer").html("too large a number");
                 countCoup ++;
             }
             else if (number > nbEnter) {
-                $(".textAnswer").html("Trop petit");
+                $(".textAnswer").html("number too small"); // .html used to create text into p class. 
                 countCoup ++;
             } 
             else if (number == nbEnter)
             {
-                $(".textAnswer").html("égalité !");
-                $(".textCount").html("</br> Vous avez fait " + countCoup + " Coup !");
+                $(".textAnswer").html("Win !"); // When the numbers is equal , p in text Win !
+                $(".textCount").html("</br> Vous avez fait " + countCoup + " Coup !"); // create p with coun't number. 
             }
         }
-
-
             
-
-
             </script>
 </body>
 </html>
